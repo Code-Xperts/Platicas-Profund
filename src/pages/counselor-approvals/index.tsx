@@ -143,11 +143,11 @@ function CounselorApprovals() {
   return (
     <>
     <div className="pt-6">
-        <h2 className="text-[20px] font-medium mb-4">Stats</h2>
+      <h1 className="mt-6 text-3xl font-bold intro-y">Counselor Applications</h1>
+      <p className="mt-2 text-slate-500">Review pending counselor applications and manage approvals</p>
+        <h2 className="text-[20px] font-medium my-4">Stats</h2>
       <DashboardStats />
     </div>
-      <h1 className="mt-6 text-[20px] font-medium intro-y">Counselor Applications</h1>
-      <p className="mt-2 text-slate-500">Review pending counselor applications and manage approvals</p>
       <div className="grid grid-cols-12 gap-6 mt-5">
         <div className="flex flex-wrap items-center col-span-12 mt-2 intro-y sm:flex-nowrap">
           <Menu as="div" className="relative inline-block text-left">
@@ -315,8 +315,8 @@ function CounselorApprovals() {
         <Dialog.Panel className="w-full max-w-md rounded-lg bg-white p-0 shadow-lg">
           {/* Header */}
           <div className="p-6 pb-4 border-b border-gray-200">
-            <h3 className="text-2xl font-bold text-gray-900">Applicant Details</h3>
-            <p className="text-sm text-gray-600 mt-1">Complete information about the applicant.</p>
+            <h3 className="text-2xl font-bold ">Applicant Details</h3>
+            <p className="text-sm  mt-1">Complete information about the applicant.</p>
           </div>
 
           {/* Content */}
@@ -330,24 +330,24 @@ function CounselorApprovals() {
                     className="w-20 h-20 rounded-full object-cover border-2 border-gray-200"
                   />
                   <div>
-                    <p className="text-xl font-semibold text-gray-900">
+                    <p className="text-xl font-semibold ">
                       {selectedUser.firstName} {selectedUser.lastName}
                     </p>
-                    <p className="text-sm text-gray-600">{selectedUser.email}</p>
+                    <p className="text-sm ">{selectedUser.email}</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-y-3 gap-x-4 text-sm">
                   <div className="col-span-2 sm:col-span-1">
-                    <p className="font-medium text-gray-700">Applicant ID:</p>
-                    <p className="text-gray-800">{selectedUser.id}</p>
+                    <p className="font-medium ">Applicant ID:</p>
+                    <p className="">{selectedUser.id}</p>
                   </div>
                   <div className="col-span-2 sm:col-span-1">
-                    <p className="font-medium text-gray-700">Status:</p>
+                    <p className="font-medium ">Status:</p>
                     <div className={getStatusClasses(selectedUser.status)}>{getStatusDisplay(selectedUser.status)}</div>
                   </div>
                   <div className="col-span-2">
-                    <p className="font-medium text-gray-700">Application Date:</p>
-                    <p className="text-gray-800">{selectedUser.uploadedAt}</p>
+                    <p className="font-medium ">Application Date:</p>
+                    <p className="t">{selectedUser.uploadedAt}</p>
                   </div>
                 </div>
               </>
