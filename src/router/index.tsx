@@ -71,6 +71,10 @@ import ImageZoom from "../pages/ImageZoom";
 
 import Layout from "../themes";
 import UserTable from "@/pages/table";
+import CounselorApprovals from "@/pages/counselor-approvals";
+import SessionMetadataLog from "@/pages/session-meta";
+import path from "path";
+import SubscriptionPlanConfig from "@/pages/subscription-plan/subscription-plan";
 
 function Router() {
   const routes = [
@@ -78,23 +82,26 @@ function Router() {
       path: "/",
       element: <Layout />,
       children: [
-      
-
-
-
-
         {
           path: "/users",
           element: <UserTable />,
         },
 
-
-
-
-
         {
           path: "/",
           element: <DashboardOverview1 />,
+        },
+        {
+          path: "/subscription-plan",
+          element: <SubscriptionPlanConfig />,
+        },
+        {
+          path:'/session-meta',
+          element: <SessionMetadataLog />,
+        },
+         {
+          path: "/counselor-approvals",
+          element: <CounselorApprovals />,
         },
         {
           path: "dashboard-overview-2",
