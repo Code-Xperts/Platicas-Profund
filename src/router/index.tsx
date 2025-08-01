@@ -83,12 +83,12 @@ function Router() {
       element: <Layout />,
       children: [
         {
-          path: "/users",
+          path: "/",
           element: <UserTable />,
         },
 
         {
-          path: "/",
+          path: "/dashboard",
           element: <DashboardOverview1 />,
         },
         {

@@ -110,7 +110,7 @@ export default function SessionMetadataLog() {
   return (
     <div className="p-6  min-h-screen">
       <h1 className="text-3xl font-bold ">Session Metadata Log</h1>
-      <p className="mt-1 ">Detailed session tracking with AI token usage and analytics</p>
+      {/* <p className="mt-1 ">Detailed session tracking with AI token usage and analytics</p> */}
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 bg">
@@ -133,7 +133,7 @@ export default function SessionMetadataLog() {
         <div className="flex justify-between items-center mb-4">
           <div>
             <h2 className="text-xl font-bold ">Session Metadata</h2>
-            <p className="text-sm ">Comprehensive session tracking with AI token usage</p>
+            {/* <p className="text-sm ">Comprehensive session tracking with AI token usage</p> */}
           </div>
           <Button  className="flex items-center gap-2 bg-transparent">
             <Download className="w-4 h-4" /> Export Data
@@ -153,7 +153,7 @@ export default function SessionMetadataLog() {
             />
           </div>
 
-          <Menu as="div" className="relative inline-block text-left z-50">
+          <Menu as="div" className="relative inline-block text-left z-50 text-teal-50">
             <Menu.Button as={Button} className="px-4 py-2 bg-primary  rounded-md shadow-md">
               {selectedStatus} <ChevronDownIcon className="ml-2 -mr-1 h-5 w-5 inline" />
             </Menu.Button>
@@ -356,14 +356,14 @@ export default function SessionMetadataLog() {
                     {selectedSession.tokensUsed} / {selectedSession.tokenLimit}
                   </span>
                 </div>
-                <div className="grid grid-cols-3 items-center gap-4">
+                {/* <div className="grid grid-cols-3 items-center gap-4">
                   <span className="text-gray-500">AI Usage:</span>
                   <span className="col-span-2">
                     {selectedSession.aiUsageEnabled
                       ? `Enabled (T: ${selectedSession.aiTokensTotal} | A: ${selectedSession.aiTokensActual})`
                       : "Disabled"}
                   </span>
-                </div>
+                </div> */}
               </div>
             )}
           </div>
