@@ -1,32 +1,32 @@
 import { type Menu } from "@/stores/menuSlice";
 
 const menu: Array<Menu | "divider"> = [
-  {
-    icon: "Home",
-    title: "Dashboard",
-    subMenu: [
-      {
-        icon: "Activity",
-        pathname: "/",
-        title: "Overview 1",
-      },
-      {
-        icon: "Activity",
-        pathname: "/dashboard-overview-2",
-        title: "Overview 2",
-      },
-      {
-        icon: "Activity",
-        pathname: "/dashboard-overview-3",
-        title: "Overview 3",
-      },
-      {
-        icon: "Activity",
-        pathname: "/dashboard-overview-4",
-        title: "Overview 4",
-      },
-    ],
-  },
+  // {
+  //   icon: "Home",
+  //   title: "Dashboard",
+  //   subMenu: [
+  //     {
+  //       icon: "Activity",
+  //       pathname: "/",
+  //       title: "Overview 1",
+  //     },
+  //     {
+  //       icon: "Activity",
+  //       pathname: "/dashboard-overview-2",
+  //       title: "Overview 2",
+  //     },
+  //     {
+  //       icon: "Activity",
+  //       pathname: "/dashboard-overview-3",
+  //       title: "Overview 3",
+  //     },
+  //     {
+  //       icon: "Activity",
+  //       pathname: "/dashboard-overview-4",
+  //       title: "Overview 4",
+  //     },
+  //   ],
+  // },
   // {
   //   icon: "ShoppingBag",
   //   title: "E-Commerce",
@@ -107,7 +107,7 @@ const menu: Array<Menu | "divider"> = [
 
    {
     icon: "Users",
-    pathname: "/users",
+    pathname: "/",
     title: "Users Management",
     // subMenu: [
     //   {

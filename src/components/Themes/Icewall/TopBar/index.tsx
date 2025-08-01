@@ -31,7 +31,7 @@ function Main() {
               className="w-6"
               src={logoUrl}
             />
-            <span className="ml-3 text-lg text-white"> Icewall </span>
+            <span className="ml-3 text-lg text-white"> Pláticas Profundas </span>
           </Link>
           {/* END: Logo */}
           {/* BEGIN: Breadcrumb */}
