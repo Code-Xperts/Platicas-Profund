@@ -157,6 +157,17 @@ const menu: Array<Menu | "divider"> = [
     //   },
     // ],
   },
+  {
+  icon: "BarChart3", 
+  pathname: "/kpi-dashboard",
+  title: "KPI Dashboard",
+},
+
+{
+  icon: "Zap", // Lucide's correct icon name for a lightning symbol ⚡
+  pathname: "/user-token",
+  title: "Token Management",
+},
 
 
 

@@ -75,6 +75,8 @@ import CounselorApprovals from "@/pages/counselor-approvals";
 import SessionMetadataLog from "@/pages/session-meta";
 import path from "path";
 import SubscriptionPlanConfig from "@/pages/subscription-plan/subscription-plan";
+import KPIDashboardPage from "@/pages/key-performance-indicator/kpi-perfoemance";
+import UserTokenBalances from "@/pages/Token-management/user-token";
 
 function Router() {
   const routes = [
@@ -95,9 +97,17 @@ function Router() {
           path: "/subscription-plan",
           element: <SubscriptionPlanConfig />,
         },
+            {
+          path: "/kpi-dashboard",
+          element: <KPIDashboardPage />,
+        },
         {
           path:'/session-meta',
           element: <SessionMetadataLog />,
+        },
+          {
+          path:'/user-token',
+          element: <UserTokenBalances />,
         },
          {
           path: "/counselor-approvals",
