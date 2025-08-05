@@ -153,11 +153,11 @@ export default function SessionMetadataLog() {
             />
           </div>
 
-          <Menu as="div" className="relative inline-block text-left z-50 text-teal-50">
-            <Menu.Button as={Button} className="px-4 py-2 bg-primary  rounded-md shadow-md">
+          <Menu as="div" className="relative inline-block text-left z-50 ">
+            <Menu.Button as={Button} className="px-4 py-2 bg-primary text-white rounded-md shadow-md">
               {selectedStatus} <ChevronDownIcon className="ml-2 -mr-1 h-5 w-5 inline" />
             </Menu.Button>
-            <Menu.Items className="absolute z-50 mt-2 w-40 origin-top-right rounded-md bg-white dark:text-[white] shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <Menu.Items className="absolute z-50 mt-2 w-40 origin-top-right rounded-md bg-white  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
               {["All Status", "Completed", "Pending", "Cancelled"].map((status) => (
                 <Menu.Item key={status}>
                   {({ active }) => (
@@ -208,78 +208,78 @@ export default function SessionMetadataLog() {
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto">
-          <Table className="border-spacing-y-[10px] border-separate -mt-2">
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>Session ID</Table.Th>
-                <Table.Th>Client</Table.Th>
-                <Table.Th>Counselor</Table.Th>
-                <Table.Th>Date & Time</Table.Th>
-                <Table.Th>Duration</Table.Th>
-                <Table.Th>Status</Table.Th>
-                <Table.Th>Tokens Used</Table.Th>
-                {/* <Table.Th>AI Usage</Table.Th> */}
-                <Table.Th className="text-center">Actions</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>
-              {currentItems.length > 0 ? (
-                currentItems.map((session) => (
-                  <Table.Tr key={session.id} className="intro-x">
-                    <Table.Td className="box rounded-l-[0.6rem] border-x-0 dark:bg-darkmode-600 shadow-[5px_3px_5px_#00000005] font-medium">
-                      {session.id}
-                    </Table.Td>
-                    <Table.Td className="box border-x-0 dark:bg-darkmode-600 shadow-[5px_3px_5px_#00000005]">
-                      {session.client}
-                    </Table.Td>
-                    <Table.Td className="box border-x-0 dark:bg-darkmode-600 shadow-[5px_3px_5px_#00000005]">
-                      {session.counselor}
-                    </Table.Td>
-                    <Table.Td className="box border-x-0 dark:bg-darkmode-600 shadow-[5px_3px_5px_#00000005]">
-                      <div>{session.date}</div>
-                      <div className="text-gray-500 text-sm">{session.time}</div>
-                    </Table.Td>
-                    <Table.Td className="box border-x-0 dark:bg-darkmode-600 shadow-[5px_3px_5px_#00000005]">
-                      <div>{session.duration}</div>
-                      <div className="text-gray-500 text-sm">Actual: {session.actualDuration}</div>
-                    </Table.Td>
-                    <Table.Td className="box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                      {getStatusBadge(session.status)}
-                    </Table.Td>
-                    <Table.Td className="box border-x-0 dark:bg-darkmode-600 shadow-[5px_3px_5px_#00000005]">
-                      {getTokenUsageBar(session.tokensUsed, session.tokenLimit)}
-                    </Table.Td>
-                    <Table.Td className="box rounded-r-[0.6rem] border-x-0 dark:bg-darkmode-600 shadow-[5px_3px_5px_#00000005] text-center">
-                      <Menu as="div" className="relative inline-block text-left z-10">
-                        <Menu.Button as={Button} size="sm" variant="outline-secondary" className="px-2">
-                          <MoreVertical className="w-4 h-4" />
-                        </Menu.Button>
-                        <Menu.Items className="absolute right-0 z-50 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          <Menu.Item>
-                            {({ active }) => (
-                              <button
-                                onClick={() => handleViewDetails(session)}
-                                className={`${active ? "dark:bg-[#1b253b]" : ""} w-full text-left px-1 py-2 text-sm  flex items-center`}
-                              >
-                                <Eye className="mr-2 h-4 w-4" /> View Details
-                              </button>
-                            )}
-                          </Menu.Item>
-                        </Menu.Items>
-                      </Menu>
-                    </Table.Td>
-                  </Table.Tr>
-                ))
-              ) : (
-                <Table.Tr>
-                  <Table.Td colSpan={9} className="h-24 text-center text-gray-500">
-                    No sessions found.
-                  </Table.Td>
-                </Table.Tr>
-              )}
-            </Table.Tbody>
-          </Table>
+        <div className="col-span-12 overflow-auto intro-y lg:overflow-visible">
+       <Table className="border-spacing-y-[10px] border-separate -mt-2">
+  <Table.Thead>
+    <Table.Tr>
+      <Table.Th className="border-b-0 whitespace-nowrap">Session ID</Table.Th>
+      <Table.Th className="border-b-0 whitespace-nowrap">Client</Table.Th>
+      <Table.Th className="border-b-0 whitespace-nowrap">Counselor</Table.Th>
+      <Table.Th className="border-b-0 whitespace-nowrap">Date & Time</Table.Th>
+      <Table.Th className="border-b-0 whitespace-nowrap">Duration</Table.Th>
+      <Table.Th className="border-b-0 whitespace-nowrap">Status</Table.Th>
+      <Table.Th className="border-b-0 whitespace-nowrap">Tokens Used</Table.Th>
+      <Table.Th className="border-b-0 whitespace-nowrap">Actions</Table.Th>
+    </Table.Tr>
+  </Table.Thead>
+  <Table.Tbody>
+    {currentItems.length > 0 ? (
+      currentItems.map((session) => (
+        <Table.Tr key={session.id} className="intro-x">
+          <Table.Td className="box  rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+            {session.id}
+          </Table.Td>
+          <Table.Td className="box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+            {session.client}
+          </Table.Td>
+          <Table.Td className="box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+            {session.counselor}
+          </Table.Td>
+          <Table.Td className="box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+            <div>{session.date}</div>
+            <div className="text-gray-500 text-sm">{session.time}</div>
+          </Table.Td>
+          <Table.Td className="box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+            <div>{session.duration}</div>
+            <div className="text-gray-500 text-sm">Actual: {session.actualDuration}</div>
+          </Table.Td>
+          <Table.Td className="box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+            {getStatusBadge(session.status)}
+          </Table.Td>
+          <Table.Td className="box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600" >
+            {getTokenUsageBar(session.tokensUsed, session.tokenLimit)}
+          </Table.Td>
+          <Table.Td className="box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+            <Menu as="div" className="relative inline-block text-left z-10">
+              <Menu.Button as={Button} size="sm" variant="outline-secondary" className="px-2">
+                <MoreVertical className="w-4 h-4" />
+              </Menu.Button>
+              <Menu.Items className="absolute right-0 z-50 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      onClick={() => handleViewDetails(session)}
+                      className={`${active ? "dark:bg-[#1b253b]" : ""} w-full text-left px-1 py-2 text-sm  flex items-center`}
+                    >
+                      <Eye className="mr-2 h-4 w-4" /> View Details
+                    </button>
+                  )}
+                </Menu.Item>
+              </Menu.Items>
+            </Menu>
+          </Table.Td>
+        </Table.Tr>
+      ))
+    ) : (
+      <Table.Tr>
+        <Table.Td colSpan={9} className="h-24 text-center text-gray-500">
+          No sessions found.
+        </Table.Td>
+      </Table.Tr>
+    )}
+  </Table.Tbody>
+</Table>
+
         </div>
 
         {/* Pagination */}

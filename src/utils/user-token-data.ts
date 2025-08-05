@@ -1,3 +1,23 @@
+export interface User {
+  id: string
+  name: string
+  email: string
+  plan: "Basic" | "Premium"
+  currentTokens: number
+  monthlyAllocation: number
+  tokenStatus: "Normal" | "Empty" | "Low" | "Overflow"
+  overflowAmount?: number
+  status: "Active" | "Suspended"
+  nextRefill: string
+}
+
+export interface TokenHistoryEntry {
+  date: string
+  type: string
+  amount: number
+  reason: string
+}
+
 export function getUserTokenData() {
   return {
     users: [
@@ -141,7 +161,6 @@ export function getUserTokenData() {
 
 export function getUserTokenHistory(userId: string) {
   // This is mock data. In a real application, you would fetch this from a database.
-  type TokenHistoryEntry = { date: string; type: string; amount: number; reason: string };
   const historyData: { [key: string]: TokenHistoryEntry[] } = {
     "user-001": [
       { date: "2024-01-25", type: "Refill", amount: 4, reason: "Monthly allocation" },
@@ -164,6 +183,5 @@ export function getUserTokenHistory(userId: string) {
     ],
     // Add more history data for other users as needed
   }
-
   return historyData[userId] || []
 }

@@ -77,15 +77,20 @@ import path from "path";
 import SubscriptionPlanConfig from "@/pages/subscription-plan/subscription-plan";
 import KPIDashboardPage from "@/pages/key-performance-indicator/kpi-perfoemance";
 import UserTokenBalances from "@/pages/Token-management/user-token";
+import LoginHoverForm from "@/pages/login-form/login-form";
 
 function Router() {
   const routes = [
     {
       path: "/",
+      element: <LoginHoverForm />,
+    },
+    {
+      path: "/",
       element: <Layout />,
       children: [
         {
-          path: "/",
+          path: "/user-table",
           element: <UserTable />,
         },
 
@@ -97,19 +102,19 @@ function Router() {
           path: "/subscription-plan",
           element: <SubscriptionPlanConfig />,
         },
-            {
+        {
           path: "/kpi-dashboard",
           element: <KPIDashboardPage />,
         },
         {
-          path:'/session-meta',
+          path: "/session-meta",
           element: <SessionMetadataLog />,
         },
-          {
-          path:'/user-token',
+        {
+          path: "/user-token",
           element: <UserTokenBalances />,
         },
-         {
+        {
           path: "/counselor-approvals",
           element: <CounselorApprovals />,
         },

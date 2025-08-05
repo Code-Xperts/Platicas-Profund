@@ -107,7 +107,7 @@ const menu: Array<Menu | "divider"> = [
 
    {
     icon: "Users",
-    pathname: "/",
+    pathname: "/user-table",
     title: "Users Management",
     // subMenu: [
     //   {

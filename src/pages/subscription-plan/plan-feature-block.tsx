@@ -26,7 +26,7 @@ function FeatureItem({ text, included, index, isEditing, onToggle, onTextChange,
       </div>
       {isEditing && (
         <div className="flex items-center ml-4 space-x-2">
-          {onToggle && (
+          {/* {onToggle && (
             <button
               onClick={() => onToggle(index)}
               className={`px-2 py-1 rounded-md text-xs font-medium ${
@@ -35,7 +35,7 @@ function FeatureItem({ text, included, index, isEditing, onToggle, onTextChange,
             >
               {included ? "Remove" : "Add"}
             </button>
-          )}
+          )} */}
           {onDelete && (
             <button
               onClick={() => onDelete(index)}

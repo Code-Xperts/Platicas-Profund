@@ -61,8 +61,21 @@ export default function UserFormModal({
             {isEditing ? "Edit the user details." : "Add a new user to your list."}
           </div>
         </div>
-
         <form onSubmit={onFormSubmit} className="p-5">
+          {/* Avatar Upload */}
+          <div className="mb-4">
+            <label htmlFor="image" className="block text-sm font-medium mb-1">
+              Profile Picture
+            </label>
+            <div className="flex items-center gap-4">
+              <img
+                src={formData.image || "/placeholder.svg?height=40&width=40"}
+                alt="Avatar"
+                className="w-20 h-20 rounded-full border object-cover"
+              />
+              <input type="file" accept="image/*" onChange={handleImageUpload} ref={fileInputRef} className="text-sm" />
+            </div>
+          </div>
           {/* Name */}
           <div className="mb-4">
             <label htmlFor="name" className="block text-sm font-medium mb-1">
@@ -77,28 +90,6 @@ export default function UserFormModal({
               required
             />
           </div>
-
-          {/* Avatar Upload */}
-          <div className="mb-4">
-            <label htmlFor="image" className="block text-sm font-medium mb-1">
-              Profile Picture
-            </label>
-            <div className="flex items-center gap-4">
-              <img
-                src={formData.image || "/placeholder.svg?height=40&width=40"}
-                alt="Avatar"
-                className="w-12 h-12 rounded-full border object-cover"
-              />
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-                ref={fileInputRef}
-                className="text-sm"
-              />
-            </div>
-          </div>
-
           {/* Email */}
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium mb-1">
@@ -114,7 +105,6 @@ export default function UserFormModal({
               required
             />
           </div>
-
           {/* Role */}
           <div className="mb-4">
             <label htmlFor="role" className="block text-sm font-medium mb-1">
@@ -130,30 +120,31 @@ export default function UserFormModal({
               <option value="Client">Client</option>
               <option value="Counselors">Counselors</option>
               <option value="Admin">Admin</option>
-              <option value="Viewer">Viewer</option>
+              {/* <option value="Viewer">Viewer</option> */}
             </select>
           </div>
-
-          {/* Plan Dropdown */}
-          <div className="mb-4">
-            <label htmlFor="plan" className="block text-sm font-medium mb-1">
-              Plan
-            </label>
-            <select
-              id="plan"
-              name="plan"
-              value={formData.plan}
-              onChange={onFormChange}
-              className="form-select dark:bg-[#1b253b] w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
-              required
-            >
-              <option value="">Select Plan</option>
-              <option value="Free">Free</option>
-              <option value="Basic">Basic</option>
-              <option value="Premium">Premium</option>
-            </select>
-          </div>
-
+          {/* Plan Dropdown - Conditionally rendered */}
+          {formData.role !== "Counselors" && (
+            <div className="mb-4">
+              <label htmlFor="plan" className="block text-sm font-medium mb-1">
+                Plan
+              </label>
+              <select
+                id="plan"
+                name="plan"
+                value={formData.plan}
+                onChange={onFormChange}
+                className="form-select dark:bg-[#1b253b] w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                required
+              >
+                <option value="">Select Plan</option>
+                <option value="Free">Free</option>
+                <option value="Basic">Basic</option>
+                <option value="Premium">Premium</option>
+                <option value="Pro">Pro</option>
+              </select>
+            </div>
+          )}
           {/* Status Checkbox */}
           <div className="mb-4 flex items-center">
             <input
@@ -168,7 +159,6 @@ export default function UserFormModal({
               Active
             </label>
           </div>
-
           {/* Buttons */}
           <div className="px-5 pb-8 text-center">
             <Button variant="outline-secondary" type="button" onClick={onClose} className="w-24 mr-1">

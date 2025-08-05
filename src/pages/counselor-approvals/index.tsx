@@ -190,11 +190,11 @@ function CounselorApprovals() {
           <Table className="border-spacing-y-[10px] border-separate -mt-2">
             <Table.Thead>
               <Table.Tr>
-                <Table.Th>First Name</Table.Th> {/* <-- Yahan First Name header hai */}
-                <Table.Th>Last Name</Table.Th> {/* <-- Yahan Last Name header hai */}
-                <Table.Th>Email</Table.Th>
+                <Table.Th className="border-b-0 whitespace-nowrap">First Name</Table.Th> {/* <-- Yahan First Name header hai */}
+                <Table.Th className="border-b-0 whitespace-nowrap">Last Name</Table.Th> {/* <-- Yahan Last Name header hai */}
+                <Table.Th className="border-b-0 whitespace-nowrap">Email</Table.Th>
                 <Table.Th className="border-b-0 whitespace-nowrap">STATUS</Table.Th>
-                <Table.Th className="text-center">Actions</Table.Th>
+                <Table.Th className="border-b-0 whitespace-nowrap">Actions</Table.Th>
               </Table.Tr>
             </Table.Thead>
             <Table.Tbody>
@@ -206,7 +206,7 @@ function CounselorApprovals() {
 
                   return (
                     <Table.Tr key={idx} className="intro-x">
-                      <Table.Td className="box rounded-l-[0.6rem] border-x-0 dark:bg-darkmode-600 shadow-[5px_3px_5px_#00000005]">
+                      <Table.Td className="box w-60 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 image-fit zoom-in">
                             <Tippy
@@ -220,18 +220,18 @@ function CounselorApprovals() {
                           {/* <-- Yahan First Name display ho raha hai */}
                         </div>
                       </Table.Td>
-                      <Table.Td className="box border-x-0 dark:bg-darkmode-600 shadow-[5px_3px_5px_#00000005]">
+                      <Table.Td className="box w-60 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
                         <div className="whitespace-nowrap font-medium">{user.lastName}</div>{" "}
                         {/* <-- Yahan Last Name display ho raha hai */}
                       </Table.Td>
-                      <Table.Td className="box border-x-0 dark:bg-darkmode-600 shadow-[5px_3px_5px_#00000005]">
+                      <Table.Td className="box w-60 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
                         {user.email}
                       </Table.Td>
-                      <Table.Td className="box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+                      <Table.Td className="box w-60 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
                         <div className={getStatusClasses(user.status)}>{getStatusDisplay(user.status)}</div>
                       </Table.Td>
 
-                      <Table.Td className="box rounded-r-[0.6rem] border-x-0 dark:bg-darkmode-600 shadow-[5px_3px_5px_#00000005] text-center">
+                      <Table.Td className="box w-60 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
                         <Menu as="div" className="relative inline-block text-left">
                           <Menu.Button as={Button} size="sm" variant="outline-secondary" className="px-2">
                             <MoreVertical className="w-4 h-4" />
@@ -253,7 +253,7 @@ function CounselorApprovals() {
                                   {({ active }) => (
                                     <button
                                       onClick={() => handleApprove(user.id)}
-                                      className={`${active ? "bg-gray-100" : ""} w-full text-left px-4 py-2 text-sm text-gray-700 flex items-center`}
+                                      className={`${active ? "dark:bg-[#1b253b]" : ""} w-full text-left px-4 py-2 text-sm  flex items-center`}
                                     >
                                       <CheckCircle className="w-4 h-4 mr-2" /> Approve
                                     </button>
@@ -263,7 +263,7 @@ function CounselorApprovals() {
                                   {({ active }) => (
                                     <button
                                       onClick={() => handleReject(user.id)}
-                                      className={`${active ? "bg-gray-100" : ""} w-full text-left px-4 py-2 text-sm text-gray-700 flex items-center`}
+                                      className={`${active ? "dark:bg-[#1b253b]" : ""} w-full text-left px-4 py-2 text-sm  flex items-center`}
                                     >
                                       <XCircle className="w-4 h-4 mr-2" /> Reject
                                     </button>

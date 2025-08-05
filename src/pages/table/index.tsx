@@ -10,9 +10,10 @@ import Lucide from "@/components/Base/Lucide"
 import Tippy from "@/components/Base/Tippy"
 import { Dialog, Menu } from "@/components/Base/Headless"
 import Table from "@/components/Base/Table"
-import { ChevronDownIcon } from "lucide-react" // Keeping this as it was directly imported
+import { ChevronDownIcon } from "lucide-react"
 import UserFormModal from "./user-form-model"
-// import UserFormModal from "./user-form-modal" // Import the new modal component
+import UserDetailModal from "./view-model"
+
 
 // Define the User interface (needs to be consistent across files)
 interface User {
@@ -149,8 +150,8 @@ export function getUserData() {
       image: "/placeholder.svg?height=40&width=40",
       uploadedAt: "2025-07-18",
     },
-  ];
-  return { data };
+  ]
+  return { data }
 }
 
 function UserTable() {
@@ -172,6 +173,10 @@ function UserTable() {
     status: true, // Default status for new users
     image: "/placeholder.svg?height=40&width=40", // Default image for new users
   })
+
+  // State for view detail modal
+  const [showViewDetailModal, setShowViewDetailModal] = useState(false)
+  const [currentViewingUser, setCurrentViewingUser] = useState<User | null>(null)
 
   // State for filters and pagination
   const [selectedRole, setSelectedRole] = useState("All Roles")
@@ -220,8 +225,8 @@ function UserTable() {
     setCurrentPage(page)
   }
 
-  // Function to open the Add New Category form
-  const handleAddCategoryClick = () => {
+  // Function to open the Add New User form
+  const handleAddUserClick = () => {
     setIsEditing(false)
     setCurrentEditingUser(null)
     setFormData({
@@ -250,6 +255,12 @@ function UserTable() {
     setShowFormModal(true)
   }
 
+  // Function to open the View User Detail modal
+  const handleViewDetailClick = (user: User) => {
+    setCurrentViewingUser(user)
+    setShowViewDetailModal(true)
+  }
+
   // Handle form input changes (passed to modal)
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
@@ -257,7 +268,7 @@ function UserTable() {
       const checked = (e.target as HTMLInputElement).checked
       setFormData((prev) => ({ ...prev, [name]: checked }))
     } else {
-      setFormData((prev) => ({ ...prev, [name]: value }))
+      setFormData((prev) => ({ ...prev, [name]: value as any })) // Cast to any for role/plan
     }
   }
 
@@ -300,11 +311,11 @@ function UserTable() {
       <h2 className="mt-10 text-3xl font-bold intro-y">Users</h2>
       <div className="grid grid-cols-12 gap-6 mt-5">
         <div className="flex flex-wrap items-center col-span-12 mt-2 intro-y sm:flex-nowrap">
-          <Button variant="primary" className="mr-2 shadow-md" onClick={handleAddCategoryClick}>
+          <Button variant="primary" className="mr-2 shadow-md" onClick={handleAddUserClick}>
             Add New User
           </Button>
-          <Menu as="div" className="relative inline-block text-left text-white">
-            <Menu.Button as={Button} className="px-4 py-2 bg-primary rounded-md shadow-md">
+          <Menu as="div" className="relative inline-block text-left ">
+            <Menu.Button as={Button} className="px-4 py-2 bg-primary text-white  rounded-md shadow-md">
               {selectedRole}
               <ChevronDownIcon className="ml-2 -mr-1 h-5 w-5 inline" />
             </Menu.Button>
@@ -347,16 +358,6 @@ function UserTable() {
                       className={`${active ? "dark:bg-[#1b253b]" : ""} w-full text-left px-4 py-2 text-sm `}
                     >
                       Admin
-                    </button>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }: { active: boolean }) => (
-                    <button
-                      onClick={() => handleSelectRole("Viewer")}
-                      className={`${active ? "dark:bg-[#1b253b]" : ""} w-full text-left px-4 py-2 text-sm `}
-                    >
-                      Viewer
                     </button>
                   )}
                 </Menu.Item>
@@ -430,14 +431,14 @@ function UserTable() {
                       </div>
                     </Table.Td>
                     <Table.Td className="box rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
-                      <p>{user.plan}</p>
+                      {user.role !== "Counselors" ? <p>{user.plan}</p> : <p className="text-slate-400">- N/A -</p>}
                     </Table.Td>
                     <Table.Td className="box w-40 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
                       <div
                         className={clsx([
                           "flex items-center justify-center",
-                          { "text-success": user.status },
-                          { "text-danger": !user.status },
+                          { "text-green-600": user.status },
+                          { "text-red-600": !user.status },
                         ])}
                       >
                         <Lucide icon="CheckSquare" className="w-4 h-4 mr-2" />
@@ -456,6 +457,17 @@ function UserTable() {
                           href="#"
                           onClick={(e) => {
                             e.preventDefault()
+                            handleViewDetailClick(user)
+                          }}
+                        >
+                          <Lucide icon="Eye" className="w-4 h-4 mr-1" />
+                          View
+                        </a>
+                        <a
+                          className="flex items-center mr-3"
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault()
                             handleEditUserClick(user)
                           }}
                         >
@@ -463,7 +475,7 @@ function UserTable() {
                           Edit
                         </a>
                         <a
-                          className="flex items-center text-danger"
+                          className="flex items-center text-red-600"
                           href="#"
                           onClick={(event) => {
                             event.preventDefault()
@@ -535,7 +547,7 @@ function UserTable() {
       >
         <Dialog.Panel>
           <div className="p-5 text-center">
-            <Lucide icon="XCircle" className="w-16 h-16 mx-auto mt-3 text-danger" />
+            <Lucide icon="XCircle" className="w-16 h-16 mx-auto mt-3 text-red-600" />
             <div className="mt-5 text-3xl">Are you sure?</div>
             <div className="mt-2 text-slate-500">
               Do you really want to delete these records? <br />
@@ -561,7 +573,6 @@ function UserTable() {
         </Dialog.Panel>
       </Dialog>
       {/* END: Delete Confirmation Modal */}
-
       {/* BEGIN: Add/Edit User Form Modal (now a separate component) */}
       <UserFormModal
         open={showFormModal}
@@ -572,6 +583,13 @@ function UserTable() {
         onFormSubmit={handleFormSubmit}
       />
       {/* END: Add/Edit User Form Modal */}
+      {/* BEGIN: View User Detail Modal */}
+      <UserDetailModal
+        open={showViewDetailModal}
+        onClose={() => setShowViewDetailModal(false)}
+        user={currentViewingUser}
+      />
+      {/* END: View User Detail Modal */}
     </>
   )
 }
