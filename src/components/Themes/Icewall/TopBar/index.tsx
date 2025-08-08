@@ -205,7 +205,7 @@ function Main() {
                 </div> */}
               </Menu.Header>
               <Menu.Divider className="bg-white/[0.08]" />
-              <Menu.Item className="hover:bg-white/5">
+              <Menu.Item onClick={() => navigate("/profile")} className="hover:bg-white/5">
                 <Lucide icon="User" className="w-4 h-4 mr-2" /> Profile
               </Menu.Item>
               {/* <Menu.Item className="hover:bg-white/5">
