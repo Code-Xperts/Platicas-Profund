@@ -196,6 +196,11 @@ const menu: Array<Menu | "divider"> = [
     pathname: "/subscription-plan",
     title: "Subscription Plan",
   },
+  {
+    icon: "ShieldCheck",
+    pathname: "/super-admin",
+    title: "Manage Sub-Admin",
+  },
   // {
   //   icon: "MessageSquare",
   //   pathname: "/chat",

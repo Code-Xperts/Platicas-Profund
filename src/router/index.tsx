@@ -78,6 +78,7 @@ import SubscriptionPlanConfig from "@/pages/subscription-plan/subscription-plan"
 import KPIDashboardPage from "@/pages/key-performance-indicator/kpi-perfoemance";
 import UserTokenBalances from "@/pages/Token-management/user-token";
 import LoginHoverForm from "@/pages/login-form/login-form";
+import SuperAdminForm from "@/pages/super-admin";
 
 function Router() {
   const routes = [
@@ -109,6 +110,10 @@ function Router() {
         {
           path: "/session-meta",
           element: <SessionMetadataLog />,
+        },
+        {
+          path: "/super-admin",
+          element: <SuperAdminForm />,
         },
         {
           path: "/user-token",
