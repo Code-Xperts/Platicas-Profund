@@ -79,6 +79,7 @@ import KPIDashboardPage from "@/pages/key-performance-indicator/kpi-perfoemance"
 import UserTokenBalances from "@/pages/Token-management/user-token";
 import LoginHoverForm from "@/pages/login-form/login-form";
 import SuperAdminForm from "@/pages/super-admin";
+import AdminProfile from "@/components/profile/profile";
 
 function Router() {
   const routes = [
@@ -93,6 +94,10 @@ function Router() {
         {
           path: "/user-table",
           element: <UserTable />,
+        },
+        {
+          path: "/profile",
+          element: <AdminProfile />,
         },
 
         {
