@@ -4,8 +4,10 @@ import illustrationUrl from "@/assets/images/illustration.svg";
 import { FormInput, FormCheck } from "@/components/Base/Form";
 import Button from "@/components/Base/Button";
 import clsx from "clsx";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
+  const navigate = useNavigate();
   return (
     <>
       <div
@@ -26,7 +28,7 @@ function Main() {
                   className="w-6"
                   src={logoUrl}
                 />
-                <span className="ml-3 text-lg text-white"> Rubick </span>
+                <span className="ml-3 text-lg text-white"> Pláticas Profundas </span>
               </a>
               <div className="my-auto">
                 <img
@@ -80,23 +82,23 @@ function Main() {
                       Remember me
                     </label>
                   </div>
-                  <a href="">Forgot Password?</a>
+                  {/* <a href="">Forgot Password?</a> */}
                 </div>
                 <div className="mt-5 text-center intro-x xl:mt-8 xl:text-left">
-                  <Button
+                  <Button onClick={() => navigate("/user-table")}
                     variant="primary"
                     className="w-full px-4 py-3 align-top xl:w-32 xl:mr-3"
                   >
                     Login
                   </Button>
-                  <Button
+                  {/* <Button
                     variant="outline-secondary"
                     className="w-full px-4 py-3 mt-3 align-top xl:w-32 xl:mt-0"
                   >
                     Register
-                  </Button>
+                  </Button> */}
                 </div>
-                <div className="mt-10 text-center intro-x xl:mt-24 text-slate-600 dark:text-slate-500 xl:text-left">
+                {/* <div className="mt-10 text-center intro-x xl:mt-24 text-slate-600 dark:text-slate-500 xl:text-left">
                   By signin up, you agree to our{" "}
                   <a className="text-primary dark:text-slate-200" href="">
                     Terms and Conditions
@@ -105,7 +107,7 @@ function Main() {
                   <a className="text-primary dark:text-slate-200" href="">
                     Privacy Policy
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
             {/* END: Login Form */}

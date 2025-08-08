@@ -133,7 +133,7 @@ function Main() {
                 </div>
               </div> */}
               <div className="border-b border-dashed"></div>
-              <div className="px-8 pt-6 pb-8">
+              {/* <div className="px-8 pt-6 pb-8">
                 <div className="text-base font-medium">Layouts</div>
                 <div className="text-slate-500 mt-0.5">Choose your layout</div>
                 <div className="mt-5 grid grid-cols-3 gap-x-5 gap-y-3.5">
@@ -170,7 +170,7 @@ function Main() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
               <div className="border-b border-dashed"></div>
               <div className="px-8 pt-6 pb-8">
                 <div className="text-base font-medium">Color Schemes</div>

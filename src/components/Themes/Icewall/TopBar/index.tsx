@@ -1,7 +1,7 @@
 import { useState, Fragment } from "react";
 import Lucide from "@/components/Base/Lucide";
 import logoUrl from "@/assets/images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Breadcrumb from "@/components/Base/Breadcrumb";
 import { FormInput } from "@/components/Base/Form";
 import { Menu, Popover } from "@/components/Base/Headless";
@@ -18,7 +18,7 @@ function Main() {
   const hideSearchDropdown = () => {
     setSearchDropdown(false);
   };
-
+  const navigate = useNavigate();
   return (
     <>
       {/* BEGIN: Top Bar */}
@@ -40,13 +40,13 @@ function Main() {
             className="h-full md:ml-10 md:pl-10 md:border-l border-white/[0.08] mr-auto -intro-x"
           >
             <Breadcrumb.Link to="/">Application</Breadcrumb.Link>
-            <Breadcrumb.Link to="/" active={true}>
+            {/* <Breadcrumb.Link to="/" active={true}>
               Dashboard
-            </Breadcrumb.Link>
+            </Breadcrumb.Link> */}
           </Breadcrumb>
           {/* END: Breadcrumb */}
           {/* BEGIN: Search */}
-          <div className="relative mr-3 intro-x sm:mr-6">
+          <div className="relative mr-3 intro-x s m:mr-6">
             <div className="hidden search sm:block">
               <FormInput
                 type="text"
@@ -74,7 +74,7 @@ function Main() {
               leaveTo="mt-5 invisible opacity-0 translate-y-1"
             >
               <div className="absolute right-0 z-10 mt-[3px]">
-                <div className="w-[450px] p-5 box">
+                {/* <div className="w-[450px] p-5 box">
                   <div className="mb-2 font-medium">Pages</div>
                   <div className="mb-5">
                     <a href="" className="flex items-center">
@@ -138,7 +138,7 @@ function Main() {
                       </div>
                     </a>
                   ))}
-                </div>
+                </div> */}
               </div>
             </Transition>
           </div>
@@ -200,26 +200,26 @@ function Main() {
             <Menu.Items className="w-56 mt-px relative bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
               <Menu.Header className="font-normal">
                 <div className="font-medium">{fakerData[0].users[0].name}</div>
-                <div className="text-xs text-white/70 mt-0.5 dark:text-slate-500">
+                {/* <div className="text-xs text-white/70 mt-0.5 dark:text-slate-500">
                   {fakerData[0].jobs[0]}
-                </div>
+                </div> */}
               </Menu.Header>
               <Menu.Divider className="bg-white/[0.08]" />
               <Menu.Item className="hover:bg-white/5">
                 <Lucide icon="User" className="w-4 h-4 mr-2" /> Profile
               </Menu.Item>
-              <Menu.Item className="hover:bg-white/5">
+              {/* <Menu.Item className="hover:bg-white/5">
                 <Lucide icon="FilePenLine" className="w-4 h-4 mr-2" /> Add
                 Account
-              </Menu.Item>
-              <Menu.Item className="hover:bg-white/5">
+              </Menu.Item> */}
+              {/* <Menu.Item className="hover:bg-white/5">
                 <Lucide icon="Lock" className="w-4 h-4 mr-2" /> Reset Password
               </Menu.Item>
               <Menu.Item className="hover:bg-white/5">
                 <Lucide icon="HelpCircle" className="w-4 h-4 mr-2" /> Help
-              </Menu.Item>
+              </Menu.Item> */}
               <Menu.Divider className="bg-white/[0.08]" />
-              <Menu.Item className="hover:bg-white/5">
+              <Menu.Item onClick={() => navigate("/")} className="hover:bg-white/5">
                 <Lucide icon="ToggleRight" className="w-4 h-4 mr-2" /> Logout
               </Menu.Item>
             </Menu.Items>

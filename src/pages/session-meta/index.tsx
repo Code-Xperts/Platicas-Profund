@@ -135,9 +135,9 @@ export default function SessionMetadataLog() {
             <h2 className="text-xl font-bold ">Session Metadata</h2>
             {/* <p className="text-sm ">Comprehensive session tracking with AI token usage</p> */}
           </div>
-          <Button  className="flex items-center gap-2 bg-transparent">
-            <Download className="w-4 h-4" /> Export Data
-          </Button>
+            {/* <Button  className="flex items-center gap-2 bg-transparent">
+              <Download className="w-4 h-4" /> Export Data
+            </Button> */}
         </div>
 
         {/* Filters */}

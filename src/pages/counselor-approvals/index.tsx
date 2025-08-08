@@ -231,7 +231,7 @@ function CounselorApprovals() {
                         <div className={getStatusClasses(user.status)}>{getStatusDisplay(user.status)}</div>
                       </Table.Td>
 
-                      <Table.Td className="box w-60 rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
+                      <Table.Td className="box w-60  rounded-l-none rounded-r-none border-x-0 shadow-[5px_3px_5px_#00000005] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:bg-darkmode-600">
                         <Menu as="div" className="relative inline-block text-left">
                           <Menu.Button as={Button} size="sm" variant="outline-secondary" className="px-2">
                             <MoreVertical className="w-4 h-4" />
